@@ -45,6 +45,10 @@ class Assets {
   /// assets/images/onBoarding.png
   static const String imagesOnBoarding = "assets/images/onBoarding.png";
 
+  /// Assets for imagesOnBoarding1
+  /// assets/images/onBoarding1.png
+  static const String imagesOnBoarding1 = "assets/images/onBoarding1.png";
+
   /// Assets for imagesOnBoarding2
   /// assets/images/onBoarding2.png
   static const String imagesOnBoarding2 = "assets/images/onBoarding2.png";
