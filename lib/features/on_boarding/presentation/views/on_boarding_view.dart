@@ -1,4 +1,5 @@
 import 'package:first_project/core/functions/navigation.dart';
+import 'package:first_project/features/on_boarding/presentation/views/functions/on_boarding.dart';
 import 'package:first_project/features/on_boarding/presentation/views/widgets/custom_nav_bar.dart';
 import 'package:first_project/features/on_boarding/presentation/views/widgets/get_buttons.dart';
 import 'package:first_project/features/on_boarding/presentation/views/widgets/on_boarding_widget_body.dart';
@@ -30,6 +31,7 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               ),
               CustomNavBar(
                 onTap: () {
+                  onBoardingVisited();
                   customReplacementNavigate(context, "/signUp");
                 },
               ),
