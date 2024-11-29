@@ -30,7 +30,7 @@ delayedNavigate(context, "/onBoarding");
       body: Center(
         child: Text(
           AppStrings.appName,
-          style: CustomTextStyles.pacifico400style,
+          style: CustomTextStyles.pacifico400style64,
         ),
       ),
     );

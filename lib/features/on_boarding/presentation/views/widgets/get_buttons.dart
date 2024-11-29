@@ -35,7 +35,7 @@ class GetButtons extends StatelessWidget {
                   },
                   child: Text(
                     AppStrings.loginNow,
-                    style: CustomTextStyles.poppins300style
+                    style: CustomTextStyles.poppins300style16
                         .copyWith(fontWeight: FontWeight.w400),
                   )),
             ],

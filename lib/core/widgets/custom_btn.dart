@@ -22,7 +22,7 @@ class CustomBtn extends StatelessWidget {
           ),
           child: Text(
             text,
-            style: CustomTextStyles.poppins500style
+            style: CustomTextStyles.poppins500style24
                 .copyWith(fontSize: 18, color: AppColors.offWhite),
           )),
     );
