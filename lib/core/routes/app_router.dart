@@ -2,6 +2,7 @@ import 'package:first_project/core/services/service_locator.dart';
 import 'package:first_project/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
 import 'package:first_project/features/auth/presentation/views/sign_in_view.dart';
 import 'package:first_project/features/auth/presentation/views/sign_up_view.dart';
+import 'package:first_project/features/home/presentation/views/home_view.dart';
 import 'package:first_project/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:first_project/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,4 +26,8 @@ final GoRouter router = GoRouter(routes: [
             create: (context) => getIt<AuthCubit>(),
             child: const SignInView(),
           )),
+          GoRoute(
+      path: "/home",
+      builder: (context, state) =>  const HomeView(),
+          ),
 ]);

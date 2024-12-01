@@ -1,5 +1,5 @@
-import 'package:first_project/core/utils/app_colors.dart';
-import 'package:first_project/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
+import '../../../../core/utils/app_colors.dart';
+import '../auth_cubit/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
