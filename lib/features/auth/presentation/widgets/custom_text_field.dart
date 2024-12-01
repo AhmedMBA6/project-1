@@ -14,7 +14,7 @@ final Widget? suffixIcon;
     return Padding(
       padding: const EdgeInsets.only(right: 8.0, left: 8, top: 24),
       child: TextFormField(
-        obscureText: obscureText!,
+        obscureText: obscureText ?? false,
         validator: (value) {
           if (value!.isEmpty) {
             return "this field is required";

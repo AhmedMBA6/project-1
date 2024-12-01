@@ -26,7 +26,7 @@ class CustomSignUpForm extends StatelessWidget {
       },
       builder: (context, state) {
         return Form(
-            key: authCubit.signUpFormKey,
+            key: authCubit.signupFormKey,
             child: Column(
               children: [
                 CustomTextFormField(
@@ -48,6 +48,7 @@ class CustomSignUpForm extends StatelessWidget {
                   },
                 ),
                 CustomTextFormField(
+                  obscureText: authCubit.obscurePasswordTextValue,
                   suffixIcon: IconButton(
                       icon: Icon(
                         authCubit.obscurePasswordTextValue == true
@@ -65,22 +66,20 @@ class CustomSignUpForm extends StatelessWidget {
                 const TermsAndConditions(),
                 const SizedBox(height: 88),
                 state is SignupLoadingState
-                    ? CircularProgressIndicator(
-                        color: AppColors.primaryColor,
-                      )
-                    : CustomBtn(
-                        color: authCubit.termsAndConditionCheckBox == false
-                            ? AppColors.grey
-                            : null,
-                        text: AppStrings.signUp,
-                        onPressed: () {
-                          if (authCubit.termsAndConditionCheckBox == true) {
-                            if (authCubit.signUpFormKey.currentState!
-                                .validate()) {
-                              authCubit.signUpWithEmailAndPassword();
-                            }
+                  ? CircularProgressIndicator(color: AppColors.primaryColor)
+                  : CustomBtn(
+                      color: authCubit.termsAndConditionCheckBoxValue == false
+                          ? AppColors.grey
+                          : null,
+                       onPressed: () async{
+                        if (authCubit.termsAndConditionCheckBoxValue == true) {
+                          if (authCubit.signupFormKey.currentState!
+                              .validate()) {
+                           await authCubit.signUpWithEmailAndPassword();
                           }
-                        },
+                        }
+                      },
+                        text: AppStrings.signUp,
                       ),
               ],
             ));

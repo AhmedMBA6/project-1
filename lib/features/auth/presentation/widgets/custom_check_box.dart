@@ -1,5 +1,5 @@
-import '../../../../core/utils/app_colors.dart';
-import '../auth_cubit/cubit/auth_cubit.dart';
+import 'package:first_project/core/utils/app_colors.dart';
+import 'package:first_project/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +21,8 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
       onChanged: (newValue) {
         setState(() {
           value = newValue;
-          BlocProvider.of<AuthCubit>(context).updateTermsAndConditionCheckBox(newValue: newValue);
+          BlocProvider.of<AuthCubit>(context)
+                .updateTermsAndConditionCheckBox(newValue: newValue);
         });
       },
     );
