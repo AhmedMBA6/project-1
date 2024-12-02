@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
 
@@ -14,8 +15,9 @@ class AuthCubit extends Cubit<AuthState> {
   bool? obscurePasswordTextValue = true;
   GlobalKey<FormState> signupFormKey = GlobalKey();
   GlobalKey<FormState> signInFormKey = GlobalKey();
+  GlobalKey<FormState> forgotPasswordKey = GlobalKey();
 
-  signUpWithEmailAndPassword() async {
+  Future<void> signUpWithEmailAndPassword() async {
     try {
       emit(SignupLoadingState());
       final credential =
@@ -23,7 +25,8 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailAddress!,
         password: password!,
       );
-      verifyEmail();
+     await addUserProfile();
+     await verifyEmail();
       emit(SignupSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -43,7 +46,12 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  signInWithEmailAndPassword() async {
+  Future<void> verifyEmail() async{
+    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
+  }
+
+
+  Future<void> signInWithEmailAndPassword() async {
     try {
       emit(SignInLoadingState());
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -66,21 +74,36 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  void verifyEmail() async{
-    await FirebaseAuth.instance.currentUser!.sendEmailVerification();
-  }
-
   void updateTermsAndConditionCheckBox({required newValue}) {
     termsAndConditionCheckBoxValue = newValue;
     emit(TermsAndConditionUpdateState());
   }
 
-  obscurePasswordText() {
+ void obscurePasswordText() {
     if (obscurePasswordTextValue == true) {
       obscurePasswordTextValue = false;
     } else {
       obscurePasswordTextValue = true;
     }
     emit(ObscurePasswordTextUpdateState());
+  }
+
+ Future<void> resetPasswordWithLink()async{
+    try {
+      emit(ResetPasswordLoadingState());
+  await FirebaseAuth.instance.sendPasswordResetEmail(email: emailAddress!);
+  emit(ResetPasswordSuccessState());
+} on Exception catch (e) {
+  emit(ResetPasswordFailureState(errorMessage: e.toString()));
+}
+  }
+
+ Future<void> addUserProfile()async{
+    CollectionReference users = FirebaseFirestore.instance.collection("users");
+   await users.add({
+      "email": emailAddress,
+      "first_name": fristName,
+      "last_name": lastName,
+    });
   }
 }

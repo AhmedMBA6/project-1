@@ -1,5 +1,6 @@
 import 'package:first_project/core/services/service_locator.dart';
 import 'package:first_project/features/auth/presentation/auth_cubit/cubit/auth_cubit.dart';
+import 'package:first_project/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:first_project/features/auth/presentation/views/sign_in_view.dart';
 import 'package:first_project/features/auth/presentation/views/sign_up_view.dart';
 import 'package:first_project/features/home/presentation/views/home_view.dart';
@@ -26,8 +27,12 @@ final GoRouter router = GoRouter(routes: [
             create: (context) => getIt<AuthCubit>(),
             child: const SignInView(),
           )),
-          GoRoute(
-      path: "/home",
-      builder: (context, state) =>  const HomeView(),
-          ),
+  GoRoute(
+      path: "/forgotPassword",
+      builder: (context, state) => BlocProvider(
+          create: (context) => AuthCubit(), child: const ForgotPasswordView())),
+  GoRoute(
+    path: "/home",
+    builder: (context, state) => const HomeView(),
+  ),
 ]);
