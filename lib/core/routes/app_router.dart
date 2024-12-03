@@ -3,7 +3,7 @@ import 'package:first_project/features/auth/presentation/auth_cubit/cubit/auth_c
 import 'package:first_project/features/auth/presentation/views/forgot_password_view.dart';
 import 'package:first_project/features/auth/presentation/views/sign_in_view.dart';
 import 'package:first_project/features/auth/presentation/views/sign_up_view.dart';
-import 'package:first_project/features/home/presentation/views/home_view.dart';
+import 'package:first_project/features/home/presentation/widgets/home_nav_bar_widget.dart';
 import 'package:first_project/features/on_boarding/presentation/views/on_boarding_view.dart';
 import 'package:first_project/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,8 +31,9 @@ final GoRouter router = GoRouter(routes: [
       path: "/forgotPassword",
       builder: (context, state) => BlocProvider(
           create: (context) => AuthCubit(), child: const ForgotPasswordView())),
-  GoRoute(
-    path: "/home",
-    builder: (context, state) => const HomeView(),
+          GoRoute(
+    path: "/homeNavBar",
+    builder: (context, state) => const HomeNavBarWidget(),
   ),
+
 ]);

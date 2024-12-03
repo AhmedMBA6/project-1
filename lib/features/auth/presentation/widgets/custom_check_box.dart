@@ -14,6 +14,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
   bool? value = false;
   @override
   Widget build(BuildContext context) {
+    AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
     return Checkbox(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
       value: value,
@@ -21,8 +22,7 @@ class _CustomCheckBoxState extends State<CustomCheckBox> {
       onChanged: (newValue) {
         setState(() {
           value = newValue;
-          BlocProvider.of<AuthCubit>(context)
-                .updateTermsAndConditionCheckBox(newValue: newValue);
+          authCubit.updateTermsAndConditionCheckBox(newValue: newValue);
         });
       },
     );

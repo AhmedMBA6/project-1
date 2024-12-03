@@ -56,7 +56,7 @@ class CustomSignUpForm extends StatelessWidget {
                             : Icons.visibility_off_outlined,
                       ),
                       onPressed: () {
-                        authCubit.obscurePasswordText();
+                        BlocProvider.of<AuthCubit>(context).obscurePasswordText();
                       }),
                   labelText: AppStrings.password,
                   onChanged: (password) {
@@ -75,7 +75,7 @@ class CustomSignUpForm extends StatelessWidget {
                         if (authCubit.termsAndConditionCheckBoxValue == true) {
                           if (authCubit.signupFormKey.currentState!
                               .validate()) {
-                           await authCubit.signUpWithEmailAndPassword();
+                           await BlocProvider.of<AuthCubit>(context).signUpWithEmailAndPassword();
                           }
                         }
                       },
