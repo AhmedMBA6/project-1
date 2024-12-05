@@ -55,6 +55,6 @@ abstract class CustomTextStyles {
     fontSize: 20,
     fontWeight: FontWeight.w400,
     color: AppColors.deepBrown,
-    fontFamily: "Pacifico"
+    fontFamily: "Poppins"
   );
 }

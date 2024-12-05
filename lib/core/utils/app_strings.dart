@@ -71,8 +71,12 @@ abstract class AppStrings {
 
 abstract class FireBaseStrings{
   static const String historicalPeriods = "historical_periods";
+  static const String historicalCharacters = "historical_characters";
+  static const String snapShotHasError = "Somthing went wrong";
+  static const String snapShotHasDataButDoesNotExist = "Document does not exist";
+  static const String loading = "Loading...";
   static const String name = "name";
-  static const String decoration = "description";
+  static const String description = "description";
   static const String image = "image";
   static const String wars = "wars";
 

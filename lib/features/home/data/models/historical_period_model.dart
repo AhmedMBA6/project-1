@@ -1,23 +1,22 @@
+import 'package:first_project/core/models/data_model.dart';
 import 'package:first_project/core/utils/app_strings.dart';
+import 'package:first_project/features/home/data/models/wars_model.dart';
 
-class HistoricalPeriodModel {
-  final String name;
-  final String image;
-  final String discription;
-  final Map<String, dynamic> wars;
+class HistoricalPeriodModel extends DataModel{
+  final List<WarsModel> wars;
 
   HistoricalPeriodModel(
-      {required this.name,
-      required this.image,
-      required this.discription,
+      {required super.name,
+      required super.image,
+      required super.description,
       required this.wars});
 
-  factory HistoricalPeriodModel.fromJson(jsonData) {
+  factory HistoricalPeriodModel.fromJson(jsonData, warsList) {
     return HistoricalPeriodModel(
       name: jsonData[FireBaseStrings.name],
       image: jsonData[FireBaseStrings.image],
-      discription: jsonData[FireBaseStrings.decoration],
-      wars: jsonData[FireBaseStrings.wars],
+      description: jsonData[FireBaseStrings.description],
+      wars: warsList,
     );
   }
 }

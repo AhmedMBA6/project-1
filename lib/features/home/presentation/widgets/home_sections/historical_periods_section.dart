@@ -9,7 +9,7 @@ class HistoricalPeriodsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
          CustomHeaderText(
            text: AppStrings.historicalPeriods,

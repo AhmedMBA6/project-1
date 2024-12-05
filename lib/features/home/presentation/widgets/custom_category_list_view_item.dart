@@ -1,14 +1,15 @@
-import 'package:first_project/core/utils/app_assets.dart';
 import 'package:first_project/core/utils/app_colors.dart';
 import 'package:first_project/core/utils/app_text_styles.dart';
+import 'package:first_project/features/home/data/models/historical_character_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomCategoryListViewItem extends StatelessWidget {
-  const CustomCategoryListViewItem({super.key});
+  const CustomCategoryListViewItem({super.key, required this.model});
+  final HistoricalCharacterModel model;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 150,
       width: 74,
       child: Column(
@@ -29,13 +30,12 @@ class CustomCategoryListViewItem extends StatelessWidget {
                 height: 96,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
-                  image: const DecorationImage(
-                      image: AssetImage(Assets.imagesFrame3), fit: BoxFit.fill),
+                  image:  DecorationImage(
+                      image: NetworkImage(model.image), fit: BoxFit.fill),
                 ),
               )),
-          const SizedBox(height: 11),
           Text(
-            "Lionheart",
+            model.name,
             style: CustomTextStyles.poppins500style14,
           )
         ],

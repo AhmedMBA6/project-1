@@ -9,7 +9,7 @@ class HomeAppBarSection extends StatelessWidget {
     return const Column(
       children: [
         SizedBox(
-          height: 28,
+          height: 35,
         ),
         CustomHomeViewAppBar(),
         SizedBox(
